@@ -1,55 +1,55 @@
-/* ==========================================================
-   Portfolio — modèle de départ (une seule page)
-   Sommaire :
-   1. Variables
-   2. Base
-   3. En-tête
-   4. Présentation
-   5. Sections communes
-   6. Compétences
-   7. Projets
-   8. Contact
-   9. Pied de page
-   ========================================================== */
+/* ========================================================= PORTFOLIO — CSS UNIFIÉ POUR LES 4 PAGES Accueil | Projets | À propos | Contact Garder ce fichier CSS commun dans les 4 pages HTML. ========================================================= */
 
-/* ---------- 1. Variables ---------- */
+/* 1. VARIABLES COMMUNES */
 :root {
-  /* Couleurs */
   --couleur-fond: #f8f7f4;
- --couleur-header: #dad7cc;
-  /* Typographie */
+  --couleur-header: #dad7cc;
+  --couleur-fond-clair: #eeeee7;
+  --couleur-principale: #899980;
+  --couleur-verte-fonce: #254b3a;
+  --couleur-texte: #25251f;
+  --couleur-texte-doux: #858578;
+  --couleur-bordure: #e3e1d9;
   --police: "Inter", Arial, sans-serif;
-
-  /* Mise en page */
   --largeur-max: 1100px;
-  --rayon: 10px;
+  --rayon: 3px;
 }
 
-/* ---------- 2. Base ---------- */
+/* 2. BASE COMMUNE */
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
+  min-height: 100vh;
+  width: 100%;
   font-family: var(--police);
-  font-size: 17px;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--couleur-texte);
-  background-color: var(--couleur-fond);
-  width:100%;
-  min-height: 100vh;
+  background: var(--couleur-fond);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
 }
 
 h1,
 h2,
 h3 {
-  margin: 0;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 p {
-  margin: 0;
+  margin-bottom: 14px;
 }
 
 ul {
@@ -63,188 +63,388 @@ a {
   text-decoration: none;
 }
 
+img {
+  max-width: 100%;
+}
+
 .conteneur {
+  width: 90%;
   max-width: var(--largeur-max);
   margin: 0 auto;
-  padding: 0 24px;
 }
 
-.bouton {
-  display: inline-block;
-  padding: 14px 28px;
-  border: none;
-  border-radius: var(--rayon);
-  font-family: var(--police);
-  font-size: 16px;
-  font-weight: 600;
-  color: #ffffff;
-  background-color: var(--couleur-principale);
-  cursor: pointer;
-}
-
-.lien {
-  font-weight: 600;
-  color: var(--couleur-principale);
-}
-
-/* ---------- 3. En-tête ---------- */
+/* 3. HEADER ET MENU — IDENTIQUES SUR CHAQUE PAGE */
 .en-tete {
-   background-color: var(--couleur-header);
+  width: 100%;
+  background: var(--couleur-header);
+  border-bottom: 1px solid #c5c3b9;
 }
 
 .en-tete__contenu {
+  min-height: 54px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 72px;
+  justify-content: space-between;
+  gap: 24px;
 }
 
 .logo {
-  font-size: 20px;
+  color: var(--couleur-verte-fonce);
+  font-size: 13px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .menu {
   display: flex;
-  gap: 32px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 28px;
 }
 
 .menu a {
-  width: 211.59 px;
-  height: 46.33px;
-  font-size: 16px;
-  
- 
+  color: var(--couleur-texte);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
 }
 
-/* ---------- 4. Présentation ---------- */
+.menu a:hover,
+.menu a[aria-current="page"] {
+  color: var(--couleur-verte-fonce);
+}
+
+/* 4. BOUTONS ET LIENS COMMUNS */
+.bouton,
+.lien {
+  display: inline-block;
+  padding: 11px 18px;
+  border: 1px solid var(--couleur-principale);
+  border-radius: var(--rayon);
+  background: var(--couleur-principale);
+  color: #fff;
+  font-family: var(--police);
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.bouton:hover,
+.lien:hover {
+  background: #718269;
+  border-color: #718269;
+  transform: translateY(-1px);
+}
+
+.bouton--secondaire {
+  background: transparent;
+  color: var(--couleur-verte-fonce);
+}
+
+.bouton--secondaire:hover {
+  background: var(--couleur-header);
+  color: var(--couleur-verte-fonce);
+}
+
+/* 5. ACCUEIL — PRÉSENTATION */
 .presentation {
-  padding: 96px 0;
+  padding: 45px 0 50px;
 }
 
 .presentation__contenu {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
   align-items: center;
-  gap: 64px;
+  gap: 45px;
 }
 
 .presentation__texte {
-
   max-width: 600px;
 }
 
 .surtitre {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  color: var(--couleur-texte-doux);
+  font-size: 10px;
   font-weight: 600;
-  color: var(--couleur-principale);
+  letter-spacing: 2px;
 }
 
 .presentation h1 {
-  font-size: 56px;
+  margin-bottom: 8px;
+  color: #171713;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 36px;
+  font-weight: 700;
 }
 
 .metier {
-  margin-top: 8px;
-  margin-bottom: 24px;
-  font-size: 24px;
-  color: var(--couleur-texte-doux);
+  margin-bottom: 16px;
+  color: var(--couleur-principale);
+  font-size: 14px;
 }
 
-.presentation .bouton {
-  margin-top: 32px;
+.presentation__texte p {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.presentation__texte .bienvenue {
+  margin-top: 22px;
+  color: var(--couleur-verte-fonce);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+}
+
+.presentation__texte .description {
+  max-width: 430px;
+}
+
+.presentation__texte .question {
+  margin-top: 22px;
+  color: var(--couleur-verte-fonce);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+}
+
+.presentation__boutons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 25px;
 }
 
 .presentation__photo {
-  width: 280px;
-  height: 280px;
+  display: block;
+  width: 240px;
+  height: 240px;
+  max-width: 100%;
+  justify-self: center;
+  object-fit: cover;
+  object-position: center;
   border-radius: 50%;
-  transform : translateY(-160px);
-
 }
 
-/* ---------- 5. Sections communes ---------- */
+/* 6. SECTIONS COMMUNES */
 .section {
-  padding: 80px 0;
+  padding: 50px 0;
+  background: var(--couleur-fond);
 }
 
 .section--claire {
-  background-color: var(--couleur-fond-clair);
+  background: var(--couleur-fond-clair);
 }
 
 .section h2 {
-  font-size: 36px;
+  margin-bottom: 10px;
+  font-size: 26px;
 }
 
 .section__intro {
-  margin-top: 8px;
-  margin-bottom: 40px;
+  margin-bottom: 28px;
   color: var(--couleur-texte-doux);
+  font-size: 13px;
 }
 
-/* ---------- 6. Compétences ---------- */
+/* 7. COMPÉTENCES */
 .competences {
   display: flex;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .competences li {
-  padding: 10px 22px;
+  padding: 8px 15px;
   border: 1px solid var(--couleur-bordure);
   border-radius: var(--rayon);
+  background: #fff;
+  font-size: 12px;
   font-weight: 600;
-  background-color: var(--couleur-fond);
 }
 
-/* ---------- 7. Projets ---------- */
-/* Les projets sont empilés les uns sous les autres. */
+/* 8. PAGE PROJETS */
+.projets {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 22px;
+}
+
 .projet {
   display: flex;
-  align-items: center;
-  gap: 32px;
-  margin-bottom: 24px;
-  padding: 24px;
+  min-width: 0;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px;
   border: 1px solid var(--couleur-bordure);
-  border-radius: var(--rayon);
+  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.projet:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
 }
 
 .projet__image {
-  width: 320px;
-  height: 200px;
-  border-radius: var(--rayon);
+  display: block;
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  background: #eeeeea;
+}
+
+.projet__texte {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .projet h3 {
   margin-bottom: 8px;
-  font-size: 22px;
+  color: var(--couleur-verte-fonce);
+  font-size: 14px;
 }
 
 .projet p {
+  margin-bottom: 12px;
   color: var(--couleur-texte-doux);
+  font-size: 12px;
+  line-height: 1.7;
 }
 
 .technologies {
   display: flex;
-  gap: 8px;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 18px;
 }
 
 .technologies li {
-  padding: 4px 12px;
-  border-radius: 6px;
-  font-size: 14px;
-  background-color: var(--couleur-fond-clair);
+  padding: 4px 8px;
+  border: 1px solid #d9e0d3;
+  background: var(--couleur-fond-clair);
+  color: var(--couleur-verte-fonce);
+  font-size: 10px;
+  font-weight: 600;
 }
 
-/* ---------- 8. Contact ---------- */
+.projet .lien {
+  margin-top: auto;
+}
+
+/* 9. PAGE À PROPOS Le body de a-propos.html doit avoir class="page-apropos". */
+.page-apropos {
+  background: var(--couleur-fond);
+  color: var(--couleur-texte);
+  font-family: var(--police);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.page-apropos .site-apropos {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1100px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--couleur-fond);
+}
+
+.page-apropos .en-tete__contenu {
+  padding: 0 24px;
+}
+
+.page-apropos .apropos-contenu {
+  flex: 1;
+  padding: 38px 48px 45px;
+  background: var(--couleur-fond);
+}
+
+.page-apropos .apropos-contenu section {
+  margin: 0 0 26px;
+}
+
+.page-apropos .apropos-contenu h1,
+.page-apropos .apropos-contenu h2 {
+  margin-bottom: 12px;
+  color: var(--couleur-verte-fonce);
+  font-size: 14px;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.page-apropos .apropos-contenu p {
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 1.7;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.page-apropos .titre-vert {
+  color: var(--couleur-verte-fonce);
+}
+
+.page-apropos .titre-rose {
+  color: #a64d70;
+}
+
+.page-apropos .parcours {
+  margin-top: 22px;
+}
+
+.page-apropos .parcours-item {
+  margin-bottom: 20px;
+}
+
+.page-apropos .parcours-item h3 {
+  margin: 0 0 8px 20px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.page-apropos .competences {
+  display: block;
+  margin-left: 20px;
+}
+
+.page-apropos .competences li {
+  margin-bottom: 7px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 12px;
+}
+
+.page-apropos .objectifs ul {
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.page-apropos .objectifs li {
+  margin-bottom: 6px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* 10. PAGE CONTACT ET FORMULAIRE */
 .formulaire {
+  width: 100%;
   max-width: 560px;
 }
 
 .formulaire label {
   display: block;
   margin-bottom: 6px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -252,27 +452,234 @@ a {
 .formulaire textarea {
   display: block;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   padding: 12px 14px;
   border: 1px solid var(--couleur-bordure);
   border-radius: var(--rayon);
-  font-family: var(--police);
-  font-size: 16px;
+  outline-color: var(--couleur-principale);
+  background: #fff;
   color: var(--couleur-texte);
-  background-color: var(--couleur-fond);
+  font-family: var(--police);
+  font-size: 13px;
+}
+
+.formulaire textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.formulaire input:focus,
+.formulaire textarea:focus {
+  border-color: var(--couleur-principale);
 }
 
 .reseaux {
   display: flex;
-  gap: 24px;
-  margin-top: 40px;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 30px;
 }
 
-/* ---------- 9. Pied de page ---------- */
+/* 11. FOOTER — IDENTIQUE SUR CHAQUE PAGE */
 .pied {
-  padding: 32px 0;
-  border-top: 1px solid var(--couleur-bordure);
-  font-size: 15px;
-  text-align: center;
+  width: 100%;
+  padding: 14px 0;
+  border-top: 1px solid #333;
+  background: var(--couleur-fond);
   color: var(--couleur-texte-doux);
+}
+
+.pied .conteneur,
+.page-apropos .pied__contenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.pied p,
+.page-apropos .pied p {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.page-apropos .pied {
+  padding: 14px 24px;
+  border-top: 1px solid #333;
+  background: var(--couleur-fond);
+}
+
+.page-apropos .pied__nom {
+  color: var(--couleur-verte-fonce);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* 12. TABLETTES */
+@media (max-width: 900px) {
+  .menu {
+    gap: 15px;
+  }
+
+  .projets {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .presentation__contenu {
+    gap: 25px;
+  }
+
+  .presentation__photo {
+    width: 210px;
+    height: 210px;
+  }
+}
+
+/* 13. TÉLÉPHONES */
+@media (max-width: 600px) {
+  .conteneur {
+    width: 92%;
+  }
+
+  .en-tete__contenu,
+  .page-apropos .en-tete__contenu {
+    flex-direction: column;
+    justify-content: center;
+    padding: 14px 0;
+    gap: 12px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 14px;
+  }
+
+  .menu a {
+    font-size: 9px;
+  }
+
+  .presentation {
+    padding: 30px 0;
+  }
+
+  .presentation__contenu {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .presentation__texte {
+    margin: 0 auto;
+  }
+
+  .presentation h1 {
+    font-size: 30px;
+  }
+
+  .presentation__texte .description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .presentation__boutons {
+    justify-content: center;
+  }
+
+  .presentation__photo {
+    grid-row: 1;
+    width: 170px;
+    height: 170px;
+  }
+
+  .section {
+    padding: 32px 0;
+  }
+
+  .section h2 {
+    font-size: 23px;
+  }
+
+  .projets {
+    grid-template-columns: 1fr;
+  }
+
+  .projet__image {
+    height: 210px;
+  }
+
+  .page-apropos .apropos-contenu {
+    padding: 28px 20px 35px;
+  }
+
+  .page-apropos .pied {
+    padding: 14px 16px;
+  }
+
+  .pied .conteneur,
+  .page-apropos .pied__contenu {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .page-apropos .pied p {
+    text-align: center;
+  }
+}
+/* FOOTER IDENTIQUE SUR TOUTES LES PAGES */
+
+.pied {
+  width: 100%;
+  padding: 14px 28px;
+  background-color: #f8f7f4;
+  border-top: 3px solid #333;
+}
+
+.pied .conteneur,
+.pied__contenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.pied .pied__nom {
+  margin: 0;
+  color: #254b3a;
+  font-size: 12px;
+  font-weight: 700;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.pied p {
+  margin: 0;
+  color: #858578;
+  font-size: 10px;
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .pied .conteneur,
+  .pied__contenu {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .pied .pied__nom {
+    font-size: 10px;
+  }
+
+  .pied p {
+    font-size: 9px;
+  }
 }
