@@ -22,33 +22,37 @@
       <nav aria-label="Navigation principale">
         <ul class="menu">
           <li><a href="index.html">Accueil</a></li>
-          
           <li><a href="apropos.html">apropos</a></li>
-          <li><a href="contact.html">Contact</a></li>
           <li><a href="projet.html">Projets</a></li>
+           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <!-- ========== CONTACT ========== -->
-    <section id="contact" class="section section--claire">
-      <div class="conteneur">
-        <h2>Contact</h2>
-        <p class="section__intro">Une question, une proposition ? Écrivez -moi.</p>
+   <form class="formulaire" action="#" method="post">
 
-        <form class="formulaire" action="#" method="post">
-          <label for="nom">Nom</label>
-          <input id="nom" name="nom" type="text">
+    <label for="nom">Nom</label>
+    <input id="nom" name="nom" type="text"
+    
+           placeholder="Votre nom" required>
 
-          <label for="email">E-mail</label>
-          <input id="email" name="email" type="text">
+    <label for="prenom">Prénom</label>
+    <input id="prenom" name="prenom" type="text"
+           placeholder="Votre prénom" required>
 
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="6"></textarea>
+    <label for="email">E-mail</label>
+    <input id="email" name="email" type="email"
+           placeholder="Votre adresse e-mail" required>
 
-          <button class="bouton" type="submit">Envoyer</button>
-        </form>
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="6"
+              placeholder="Écrivez votre message..."
+              required></textarea>
+
+    <button class="bouton" type="submit">Envoyer</button>
+
 
         <ul class="reseaux">
 
